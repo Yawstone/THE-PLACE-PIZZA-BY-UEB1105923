@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Place Pizza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&family=Alice&display=swap" rel="stylesheet">
+    <style>
+        * 
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            text-align: left;
+            padding: 30px 0;
+        }
+        
+        .logo {
+            font-family: 'Leckerli One', cursive;
+            font-size: 48px;
+            color: #ff9900;
+            
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: right;
+            background-color: #333;
+            padding: 15px 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: #ff9900;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .page-container {
+            display: none;
+            min-height: calc(100vh - 180px);
+        }
+        
+        .active-page {
+            display: block;
+        }
+        
+
+        /* Home Page Styles */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('file:///C:/Users/YAW%20LIVINGSTONE/Desktop/P/NNNN.webp');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero h1 {
+            font-family: 'Alice', serif;
+            font-size: 48px;
+            color: gold;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .cta-buttons {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: #e68a00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Menu Page Styles */
+
+    
+
+
+        .menu-header {
+            font-size: 48px;
+            text-align: center;
+            background-image: "C:\Users\YAW LIVINGSTONE\Desktop\P\HHH.webp";
+            margin-bottom: 20px;
+        }
+        
+        .menu-header span {
+            font-weight: bold;
+        }
+        
+        .menu-divider {
+            border: none;
+            border-top: 10px solid #2f2e2e;
+            background-image: "C:\Users\YAW LIVINGSTONE\Desktop\P\FOUR SEASONS PIZZA.webp";
+            margin: 20px 0 40px;
+        }
+        
+        .menu-section-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+            
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ff9900;
+        }
+        
+        .menu-item-details {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .menu-item-name {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        
+        .menu-item-price {
+            font-size: 20px;
+            color: #ff9900;
+            font-weight: bold;
+        }
+        
+        .order-button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .order-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #ff9900;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .order-button:hover {
+            background-color: #e68a00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Order Page Styles */
+        .order-form {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            background-image: "C:\Users\YAW LIVINGSTONE\Desktop\P\FOUR SEASONS PIZZA.webp";
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #333;
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .option-group {
+            margin-bottom: 15px;
+        }
+        
+        .option-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .option-group ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .option-group li {
+            margin-bottom: 5px;
+            position: relative;
+        }
+        
+        .option-group li:before {
+            content: "-";
+            position: absolute;
+            left: -15px;
+        }
+        
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .radio-group {
+            margin-top: 10px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option label {
+            margin-left: 8px;
+        }
+        
+        .form-divider {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 30px 0;
+        }
+        
+        .submit-button {
+            display: block;
+            width: 200px;
+            margin: 40px auto 0;
+            padding: 15px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .submit-button:hover {
+            background-color: #e68a00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+            }
+            
+            nav a {
+                margin: 5px;
+                font-size: 16px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        .left{
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <div class="logo left">THE PLACE</div>
+        <a href="#" class="nav-link" data-page="home">HOME</a>
+        <a href="#" class="nav-link" data-page="menu">MENU</a>
+        <a href="#" class="nav-link" data-page="order">ORDER</a>
+        <a href="#" class="nav-link" data-page="about">ABOUT</a>
+        <a href="#" class="nav-link" data-page="gallery">GALLERY</a>
+        <a href="#" class="nav-link" data-page="contact">CONTACT</a>
+    </nav>
+    
+    <!-- Home Page -->
+    <div id="home" class="page-container active-page">
+        <section class="hero">
+            <h1>WELCOME TO THE PLACE</h1>
+            <p>EAT HEALTHY AND THE BEST PIZZA</p>
+            <p>THE PLACE IS ONE OF THE BEST PIZZA JOINTS LOCATED IN FIAPRE SERVING ALL YOUR FAVOURITE PIZZAS WITH AWESOME RECIPES AND THE MOST TALENTED CHEFS IN TOWN.</p>
+            
+            <div class="cta-buttons">
+                <button class="cta-button nav-link" data-page="menu">OUR MENU</button>
+                <button class="cta-button nav-link" data-page="about">ABOUT US</button>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Menu Page -->
+    <div id="menu" class="page-container">
+        <h1 class="menu-header">THE <span>PLACE PIZZA</span></h1>
+        <hr class="menu-divider">
+        
+        <h2 class="menu-section-title">MENU</h2>
+        
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Clam Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">CLAM</div>
+                    <div class="menu-item-price">$20</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="White Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">WHITE PIZZA</div>
+                    <div class="menu-item-price">$12</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sausage Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">SAUSAGE PIZZA</div>
+                    <div class="menu-item-price">$20</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cheese Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">CHEEZE PIZZA</div>
+                    <div class="menu-item-price">$10</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chicken Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">CHICKEN PIZZA</div>
+                    <div class="menu-item-price">$18</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Hawaiian Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">HAWAIIAN PIZZA</div>
+                    <div class="menu-item-price">$15</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Margherita Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">MAÇARITTA PIZZA</div>
+                    <div class="menu-item-price">$18</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="C:\Users\YAW LIVINGSTONE\Desktop\P\FOUR SEASONS PIZZA.webp" alt="Four Seasons Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">FOUR SEASONS</div>
+                    <div class="menu-item-price">$25</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bermuda Pizza" class="menu-item-img">
+                <div class="menu-item-details">
+                    <div class="menu-item-name">BERMUDA PIZZA</div>
+                    <div class="menu-item-price">$15</div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="menu-divider">
+        
+        
+        
+        <div class="order-button-container">
+            <button class="order-button nav-link" data-page="order">ORDER</button>
+        </div>
+    </div>
+    
+    <!-- Order Page -->
+    <div id="order" class="page-container">
+        <div class="order-form">
+            
+            
+            <h2>PIZZA ORDER FORM</h2>
+            
+            <div class="form-group">
+                <h3>PIZZA TYPE</h3>
+                <input type="text" placeholder="Enter pizza type">
+            </div>
+            
+            <div class="options-grid">
+                <div class="option-group">
+                    <h3>PIZZA SIZE</h3>
+                    <ul>
+                        <li>PERSONAL(10 INCHES)</li>
+                        <li>MEDIUM(14 INCHES)</li>
+                    </ul>
+                    
+                    <h3>ADDITIONAL ITEMS</h3>
+                    <ul>
+                        <li>GARLIC BREAD</li>
+                        <li>GARDEN SALAD</li>
+                        <li>SOFT DRINK</li>
+                        <li>MOZARELLA STICKS</li>
+                    </ul>
+                </div>
+                
+                <div class="option-group">
+                    <ul style="visibility: hidden;">
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul>
+                        <li>SMALL(12 INCHES)</li>
+                        <li>LARGER(16 INCHES)</li>
+                    </ul>
+                    
+                    <ul style="margin-top: 20px;">
+                        <li>CHEEZE BREAD</li>
+                        <li>CEASAR SALAD</li>
+                        <li>CHICKEN WINGS</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="form-divider">
+            
+            <div class="form-group">
+                <h3>NAME</h3>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            
+            <div class="form-group">
+                <h3>PHONE NUMBER</h3>
+                <input type="tel" placeholder="Enter phone number">
+            </div>
+            
+            <div class="form-group">
+                <h3>EMAIL ADDRESS</h3>
+                <input type="email" placeholder="Enter email address">
+            </div>
+            
+            <hr class="form-divider">
+            
+            <div class="form-group">
+                <h3>DELIVERY METHOD</h3>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="pickup" name="delivery" checked>
+                        <label for="pickup">PICKUP</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="delivery" name="delivery">
+                        <label for="delivery">DELIVERY</label>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 15px;">
+                    <h3>ADDRESS</h3>
+                    <input type="text" placeholder="Enter delivery address">
+                </div>
+            </div>
+            
+            <hr class="form-divider">
+            
+            <div class="form-group">
+                <h3>PAYMENT METHOD</h3>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="cash" name="payment" checked>
+                        <label for="cash">CASH ON DELIVERY</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="credit" name="payment">
+                        <label for="credit">CREDIT CARD</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-button">SUBMIT ORDER</button>
+        </div>
+    </div>
+    
+    <!-- Placeholder Pages -->
+    <div id="about" class="page-container">
+        <div style="text-align: center; padding: 100px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h2>ABOUT US</h2>
+            <p>Discover our story and passion for authentic pizza-making.“The Place” is a well-established restaurant and bar located at Fiapre, Sunyani. Known for its casual American-Italian fusion cuisine, the restaurant offers a diverse menu featuring seafood, steaks, and its renowned Giant Drinks. The Place has become a staple in the Miami Beach dining scene, attracting both locals and tourists with its vibrant atmosphere and live music.  
+
+                The restaurant caters to a variety of dietary preferences, offering vegetarian-friendly, vegan, and gluten-free options. With a price range of $20 to $60, The Place provides meals for breakfast, lunch, dinner, and late-night cravings. Its features include takeout, outdoor seating, highchairs for children, a full bar, and live music, enhancing the overall dining experience.  
+                
+                Customer reviews highlight the restaurant’s cozy atmosphere, friendly service, and delicious food. One reviewer noted that their picky children “devoured” the pizza, praising the fresh ingredients and timely preparation. The intimate setting, though smaller in size, contributes to its charm, making it a recommended spot for pizza lovers seeking fresh and flavorful dishes.  
+                
+                For more information or reservations, you can contact The Place at +1 305-695-1885.  </p>
+        </div>
+    </div>
+    
+    <div id="gallery" class="page-container">
+        <div style="text-align: center; padding: 100px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h2>GALLERY</h2>
+            <p>View mouth-watering images of our delicious pizzas.</p>
+        </div>
+    </div>
+    
+    <div id="contact" class="page-container">
+        <div style="text-align: center; padding: 100px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h2>CONTACT US</h2>
+            <p>Get in touch with us for reservations and inquiries on +233577737627
+                yawstone2@gmail.com
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page Navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            function showPage(pageId) {
+                document.querySelectorAll('.page-container').forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                document.getElementById(pageId).classList.add('active-page');
+                window.scrollTo(0, 0);
+            }
+            
+            // Form Submission
+            document.querySelector('.submit-button')?.addEventListener('click', function() {
+                alert('Order submitted! Thank you for your order.');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
