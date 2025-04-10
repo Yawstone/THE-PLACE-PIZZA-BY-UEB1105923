@@ -1,4 +1,5 @@
-ABOUT
+ ABOUT
+
 “The Place” is a well-established restaurant and bar located at Fiapre, Sunyani. Known for its casual American-Italian fusion cuisine, the restaurant offers a diverse menu featuring seafood, steaks, and its renowned Giant Drinks. The Place has become a staple in the Miami Beach dining scene, attracting both locals and tourists with its vibrant atmosphere and live music.  The restaurant caters to a variety of dietary preferences, offering vegetarian-friendly, vegan, and gluten-free options. With a price range of $20 to $60, The Place provides meals for breakfast, lunch, dinner, and late-night cravings. Its features include takeout, outdoor seating, highchairs for children, a full bar, and live music, enhancing the overall dining experience.Customer reviews highlight the restaurant’s cozy atmosphere, friendly service, and delicious food. One reviewer noted that their picky children “devoured” the pizza, praising the fresh ingredients and timely preparation. The intimate setting, though smaller in size, contributes to its charm, making it a recommended spot for pizza lovers seeking fresh and flavorful dishes.For more information or reservations, you can contact The Place at +1 305-695-1885.
  
  
